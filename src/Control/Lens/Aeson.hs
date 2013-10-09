@@ -192,10 +192,10 @@ instance AsJSON String where
 type instance Index Value = Text
 type instance IxValue Value = Value
 
-instance Applicative f => Ixed f Value where
+instance Ixed Value where
   ix i = _Object.ix i
 
-instance (Applicative f, Gettable f) => Contains f Value where
+instance Contains Value where
   contains i f (Object o) = coerce (contains i f o)
   contains i f _ = coerce (indexed f i False)
 
